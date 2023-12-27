@@ -1,6 +1,6 @@
 WEATHER APP - Full stack project
 
-This app uses a weather API to retrieve the weather. The API key remains private as a security measure. The API key is in the server side of the application so
+This app uses a weather API to retrieve the local weather. The API key remains private as a security measure. The API key is in the server side of the application so
 it cant be access by the client using the browser. To add another layer of security the key is stored in an .env file.
 
 The app gets the location of the user to show the correct weather forecast using the navigator.geolocation.getCurrentPosition() function
