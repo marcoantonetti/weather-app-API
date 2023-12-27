@@ -1,0 +1,11 @@
+WEATHER APP - Full stack project
+
+This app uses a weather API to retrieve the weather. The API key remains private as a security measure. The API key is in the server side of the application so
+it cant be access by the client using the browser. To add another layer of security the key is stored in an .env file.
+
+The app gets the location of the user to show the correct weather forecast using the navigator.geolocation.getCurrentPosition() function
+
+The server is set up with express and it fetches with axios the API weather data and then it parses only the values of interest
+Then, in the client side the values are rendered in three sections: current weather, daily weather and hourly weather of today
+
+I used <template> tags for the daily and hourly section due to the repetition of its contents
