@@ -1,16 +1,16 @@
-const express = require('express')
-const cors = require("cors")
-const weatherData = require('./example.json')
-const axios = require("axios")
-require("dotenv").config()
+const express = require("express");
+const cors = require("cors");
+const weatherData = require("./example.json");
+const axios = require("axios");
+require("dotenv").config();
 
-const app = express()
-app.use(cors())
-app.use(express.urlencoded({ extended: true }))
+const app = express();
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/weather", (req, res) => {
-  const { lat, lon } = req.query
-  
+  const { lat, lon } = req.query;
+
   // If the get request throws an error is because my API KEY has expired. So I created a mock data on example.json. Un comment the res.json and it should work
   // res.json({
   //   current: parseCurrentWeather(weatherData),
@@ -33,17 +33,17 @@ app.get("/weather", (req, res) => {
         current: parseCurrentWeather(data),
         daily: parseDailyWeather(data),
         hourly: parseHourlyWeather(data),
-      })
+      });
     })
-    .catch(e => {
-      console.log('ERROR GETTING API',e)
-      res.sendStatus(500)
-    })
-})
+    .catch((e) => {
+      console.log("ERROR GETTING API", e);
+      res.sendStatus(500);
+    });
+});
 
 function parseCurrentWeather({ current, daily }) {
-  const { temp: currentTemp, weather, wind_speed } = current
-  const { pop, temp, feels_like } = daily[0]
+  const { temp: currentTemp, weather, wind_speed } = current;
+  const { pop, temp, feels_like } = daily[0];
 
   return {
     currentTemp: Math.round(currentTemp),
@@ -55,24 +55,24 @@ function parseCurrentWeather({ current, daily }) {
     precip: Math.round(pop * 100),
     icon: weather[0].icon,
     description: weather[0].description,
-  }
+  };
 }
 
 function parseDailyWeather({ daily }) {
-  return daily.slice(1).map(day => {
+  return daily.slice(1).map((day) => {
     return {
       timestamp: day.dt * 1000,
       icon: day.weather[0].icon,
       temp: Math.round(day.temp.day),
-    }
-  })
+    };
+  });
 }
 
-const HOUR_IN_SECONDS = 3600
+const HOUR_IN_SECONDS = 3600;
 function parseHourlyWeather({ hourly, current }) {
   return hourly
-    .filter(hour => hour.dt > current.dt - HOUR_IN_SECONDS)
-    .map(hour => {
+    .filter((hour) => hour.dt > current.dt - HOUR_IN_SECONDS)
+    .map((hour) => {
       return {
         timestamp: hour.dt * 1000,
         icon: hour.weather[0].icon,
@@ -80,9 +80,12 @@ function parseHourlyWeather({ hourly, current }) {
         feelsLike: Math.round(hour.feels_like),
         windSpeed: Math.round(hour.wind_speed),
         precip: Math.round(hour.pop * 100),
-      }
-    })
+      };
+    });
 }
 
-const port = process.env.PORT ?? 3001
-app.listen(port, 'localhost', () => {console.log('server started on port', port)})
+// const port = process.env.PORT ?? 3001
+const server = app.listen(0, () => {
+  const port = server.address().port;
+  console.log(`Server is running on port ${port}`);
+});
