@@ -87,7 +87,7 @@ function parseHourlyWeather({ hourly, current }) {
 
 const port = process.env.PORT ?? 3001;
 const server = app.listen(port, () => {
-  console.log(`Server is running on port ${port}!`);
+  console.log(`Server is running on port ${port}!!!`);
 });
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
