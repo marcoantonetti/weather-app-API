@@ -20,6 +20,7 @@ function getWeather(lat, lon) {
       params: { lat, lon },
     })
     .then(res => {
+      console.log('Server worked');
       renderWeather(res.data)
     })
     .catch(e => {

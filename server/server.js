@@ -29,6 +29,7 @@ app.get("/weather", (req, res) => {
       },
     })
     .then(({ data }) => {
+      console.log("Api worked");
       res.json({
         current: parseCurrentWeather(data),
         daily: parseDailyWeather(data),
@@ -84,8 +85,9 @@ function parseHourlyWeather({ hourly, current }) {
     });
 }
 
-// const port = process.env.PORT ?? 3001
-const server = app.listen(0, () => {
-  const port = server.address().port;
+const port = process.env.PORT ?? 3001;
+const server = app.listen(port, () => {
   console.log(`Server is running on port ${port}!`);
 });
+server.keepAliveTimeout = 120 * 1000;
+server.headersTimeout = 120 * 1000;
