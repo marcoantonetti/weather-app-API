@@ -8,39 +8,39 @@ const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/weather", (req, res) => {
+app.get("/", (req, res) => {
   const { lat, lon } = req.query;
 
   // If the get request throws an error is because my API KEY has expired. So I created a mock data on example.json. Un comment the res.json and it should work
-  res.json({
-    current: parseCurrentWeather(weatherData),
-    daily: parseDailyWeather(weatherData),
-    hourly: parseHourlyWeather(weatherData),
-  })
+  // res.json({
+  //   current: parseCurrentWeather(weatherData),
+  //   daily: parseDailyWeather(weatherData),
+  //   hourly: parseHourlyWeather(weatherData),
+  // })
 
-  // axios
-  //   .get("https://api.openweathermap.org/data/3.0/onecall", {
-  //     params: {
-  //       lat,
-  //       lon,
-  //       appid: process.env.API_KEY,
-  //       units: "imperial",
-  //       exclude: "minutely,alerts",
-  //     },
-  //   },
-  //   console.log(process.env.API_KEY))
-  //   .then(({ data }) => {
-  //     console.log("Api worked");
-  //     res.json({
-  //       current: parseCurrentWeather(data),
-  //       daily: parseDailyWeather(data),
-  //       hourly: parseHourlyWeather(data),
-  //     });
-  //   })
-  //   .catch((e) => {
-  //     console.log("ERROR GETTING API", e);
-  //     res.sendStatus(500);
-  //   });
+  axios
+    .get("https://api.openweathermap.org/data/3.0/onecall", {
+      params: {
+        lat,
+        lon,
+        appid: process.env.API_KEY,
+        units: "imperial",
+        exclude: "minutely,alerts",
+      },
+    },
+    console.log(process.env.API_KEY))
+    .then(({ data }) => {
+      console.log("Api worked");
+      res.json({
+        current: parseCurrentWeather(data),
+        daily: parseDailyWeather(data),
+        hourly: parseHourlyWeather(data),
+      });
+    })
+    .catch((e) => {
+      console.log("ERROR GETTING API", e);
+      res.sendStatus(500);
+    });
 });
 
 function parseCurrentWeather({ current, daily }) {

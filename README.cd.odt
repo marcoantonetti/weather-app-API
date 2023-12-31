@@ -9,3 +9,5 @@ The server is set up with express and it fetches with axios the API weather data
 Then, in the client side the values are rendered in three sections: current weather, daily weather and hourly weather of today
 
 I used <template> tags for the daily and hourly section due to the repetition of its contents
+
+hacer localhosts y api urls
