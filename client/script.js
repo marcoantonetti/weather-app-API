@@ -16,7 +16,7 @@ function positionError() {
 function getWeather(lat, lon) {
   console.log('lat: ', lat, 'lon: ',lon);
   axios
-    .get("https://express-app-1h0g.onrender.com/weather", {
+    .get("https://express-app-1h0g.onrender.com", {
       params: { lat, lon },
     })
     .then(res => {
