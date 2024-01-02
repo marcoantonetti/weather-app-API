@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
       params: {
         lat,
         lon,
-        appid: process.env.API_KEY,
+        appid: "060c3247d868bcf52579c59122df04b4",
         units: "imperial",
         exclude: "minutely,alerts",
       },
