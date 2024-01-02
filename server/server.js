@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
+app.get("/weather", (req, res) => {
   const { lat, lon } = req.query;
 
   // If the get request throws an error is because my API KEY has expired. So I created a mock data on example.json. Un comment the res.json and it should work
@@ -27,15 +27,16 @@ app.get("/", (req, res) => {
         units: "imperial",
         exclude: "minutely,alerts",
       },
+
     },
     console.log(process.env.API_KEY))
     .then(({ data }) => {
       console.log("Api worked");
       res.json({
-        current: parseCurrentWeather(data),
-        daily: parseDailyWeather(data),
-        hourly: parseHourlyWeather(data),
-      });
+        current: parseCurrentWeather(weatherData),
+        daily: parseDailyWeather(weatherData),
+        hourly: parseHourlyWeather(weatherData),
+      })    
     })
     .catch((e) => {
       console.log("ERROR GETTING API", e);
