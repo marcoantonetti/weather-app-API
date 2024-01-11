@@ -35,7 +35,7 @@
     padding: .5rem;
     border-right: 2px solid hsl(200, 100%, 10%);
   }
-
+  
   .blurred{
     filter: blur(30%);
   }
