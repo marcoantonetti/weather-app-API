@@ -16,7 +16,7 @@ function positionError() {
 function getWeather(lat, lon) {
   console.log('lat: ', lat, 'lon: ',lon);
   axios
-    .get("http://localhost:3001/weather", {
+    .get("http://localhost:3001/", {
       params: { lat, lon },
     })
     .then(res => {
