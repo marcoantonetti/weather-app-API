@@ -14,11 +14,11 @@ app.get("/", (req, res) => {
   // If the get request throws an error is because my API KEY has expired. So I created a mock data on example.json. Un comment the res.json and it should work
   // Local data
 
-  res.json({
-    current: parseCurrentWeather(weatherData),
-    daily: parseDailyWeather(weatherData),
-    hourly: parseHourlyWeather(weatherData),
-  })
+  // res.json({
+  //   current: parseCurrentWeather(weatherData),
+  //   daily: parseDailyWeather(weatherData),
+  //   hourly: parseHourlyWeather(weatherData),
+  // })
 
   // API data
   axios
