@@ -37,7 +37,7 @@
   }
   
   .blurred{
-    filter: blur(30%);
+    filter: blur(3px);
   }
   
   .header-right {
