@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
     current: parseCurrentWeather(weatherData),
     daily: parseDailyWeather(weatherData),
     hourly: parseHourlyWeather(weatherData),
-  })
+  });
 
   // API data
   // axios
@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
   //       current: parseCurrentWeather(weatherData),
   //       daily: parseDailyWeather(weatherData),
   //       hourly: parseHourlyWeather(weatherData),
-  //     })    
+  //     })
   //   })
   //   .catch((e) => {
   //     console.log("ERROR GETTING API", e);

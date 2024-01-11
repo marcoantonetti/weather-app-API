@@ -8,11 +8,7 @@
     color: hsl(200, 100%, 10%);
     font-family: sans-serif;
   }
-  
-  .blurred {
-    filter: blur(3px);
-  }
-  
+
   .header {
     display: flex;
     align-items: center;
