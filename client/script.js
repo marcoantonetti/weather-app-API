@@ -21,6 +21,7 @@ function getWeather(lat, lon) {
     })
     .then((res) => {
       console.log("Server worked: Running on render hosting https://weatherrrrr.onrender.com/");
+      console.log("No longer using API since my suscription is only for local server. Download repo on github");
       alert("Server worked: Running on render hosting https://weatherrrrr.onrender.com/")
       renderWeather(res.data);
     })
