@@ -12,15 +12,15 @@ app.get("/", (req, res) => {
   const { lat, lon } = req.query;
 
   // If the get request throws an error is because my API KEY has expired. So I created a mock data on example.json. Un comment the res.json and it should work
+  
   // Local data
-
   res.json({
     current: parseCurrentWeather(exampleData),
     daily: parseDailyWeather(exampleData),
     hourly: parseHourlyWeather(exampleData),
   })
 
-  // API data
+  // API call
   // axios
   //   .get("https://api.openweathermap.org/data/3.0/onecall", {
   //     params: {

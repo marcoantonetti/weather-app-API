@@ -16,11 +16,12 @@ function positionError() {
 function getWeather(lat, lon) {
   console.log("lat: ", lat, "lon: ", lon);
   axios
-    .get("http://localhost:3001/", {
+    .get("https://weatherrrrr.onrender.com/", {
       params: { lat, lon },
     })
     .then((res) => {
-      console.log("Server worked");
+      console.log("Server worked: Running on render hosting https://weatherrrrr.onrender.com/");
+      alert("Server worked: Running on render hosting https://weatherrrrr.onrender.com/")
       renderWeather(res.data);
     })
     .catch((e) => {
