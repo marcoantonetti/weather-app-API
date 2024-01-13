@@ -20,6 +20,9 @@ function getWeather(lat, lon) {
       params: { lat, lon },
     })
     .then((res) => {
+      console.log("No longer using weather forecast API for hosting, because my suscription only is for local servers. This weather is from an example.json on my server side. Download repo on github and uncomment lines in server.js to get the weather forecast of your location");
+      console.log("Github: https://github.com/marcoantonetti/weather-app-API.git");
+      console.log("Server https://weatherrrrr.onrender.com/");
       renderWeather(res.data);
     })
     .catch((e) => {

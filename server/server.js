@@ -11,9 +11,10 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   const { lat, lon } = req.query;
   
-  // If the get request throws an error is because my API KEY has expired. So I created a mock data on example.json. Un comment the res.json and it should work
+  // If the get request throws an error is because my API KEY has expired. So I created a mock data on example.json. Uncomment the API call and it should work
   
   // Local data
+  // Comment this if you use the API call
   res.json({
     current: parseCurrentWeather(exampleData),
     daily: parseDailyWeather(exampleData),
