@@ -10,8 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   const { lat, lon } = req.query;
-  alert("No longer using API since my suscription is only for local server. Download repo on github")
-
+  
   // If the get request throws an error is because my API KEY has expired. So I created a mock data on example.json. Un comment the res.json and it should work
   
   // Local data
