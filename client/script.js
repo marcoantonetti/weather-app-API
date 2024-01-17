@@ -2,6 +2,7 @@ import axios from "axios";
 import { format } from "date-fns";
 
 navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
+alert("Server might take some seconds to load");
 
 function positionSuccess({ coords }) {
   getWeather(coords.latitude, coords.longitude);
@@ -16,12 +17,14 @@ function positionError() {
 function getWeather(lat, lon) {
   console.log("lat: ", lat, "lon: ", lon);
   axios
-    .get("http://weatherrrrr.onrender.com/", {
-      params: { lat, lon },
-    })
+    .get("https://weatherrrrr.onrender.com/")
     .then((res) => {
-      console.log("No longer using weather forecast API for hosting, because my suscription expired. This weather is from an example.json on my server side. Download repo on github and check server.js for the API call code");
-      console.log("Github: https://github.com/marcoantonetti/weather-app-API.git");
+      console.log(
+        "No longer using weather forecast API for hosting, because my suscription expired. This weather is from an example.json on my server side. Download repo on github and check server.js for the API call code"
+      );
+      console.log(
+        "Github: https://github.com/marcoantonetti/weather-app-API.git"
+      );
       console.log("Server https://weatherrrrr.onrender.com/");
       renderWeather(res.data);
     })
