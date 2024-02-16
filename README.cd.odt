@@ -10,3 +10,6 @@ Then, in the client side the values are rendered in three sections: current weat
 
 I used <template> tags for the daily and hourly section 
 
+DISCLAIMER
+The API suscription has expired, so only a mock forecast weather is displayed
+
